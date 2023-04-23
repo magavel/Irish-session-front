@@ -1,0 +1,5 @@
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:1337/api',
+  apiKey: '124036005c5fdfaa1d3d012fb7d64a4aecca115706beee9a86f04dec7fa060dc94d8369ef329a7988802da9f4ef32d001f7fcc098cf50ff5fd6046a5e38a2b0161d98fa38f8d89ec735aaf1672736a3b33e3df7d862af1ef69676579706c1eaa4b5e3dcb10ff72e346051bba2d2a59df9360719544149edff5b57f945da51319'
+};
