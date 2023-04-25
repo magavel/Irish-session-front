@@ -1,6 +1,16 @@
-<p>Listes des morceaux</p>
-Il y a {{tunes.length}} morceaux
+<h2>Liste de tous nos morceaux</h2>
+<p>Voici la liste de tous les morceaux joués. Ces morceaux sont joué en set de 2 ou 3 morceaux</p>
+<div *ngIf="tunes">
 
-<div *ngFor="let tune of tunes">
-{{ tune.attributes.title }}
+
+  Il y a {{tunes.length}} morceaux
+
+  <div *ngFor="let tune of tunes">
+
+    <a [routerLink]="['/tunes', tune.id]">
+      {{ tune.attributes.title }}
+    </a>
+
+  </div>
+
 </div>

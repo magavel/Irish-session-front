@@ -17,7 +17,7 @@ export class SetService {
     });
     return this.http.get(`${this.apiUrl}/sets`, {headers})
   }
-  public get(id:number): Observable<any>{
+  public get(id: string): Observable<any>{
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.apiKey}`
     });

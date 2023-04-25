@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SetService} from "../../services/set.service";
+import {ISet} from "../models/set";
 
 
 @Component({
@@ -9,7 +10,8 @@ import {SetService} from "../../services/set.service";
 })
 export class SetsComponent implements OnInit{
   constructor(private setService: SetService) {}
-  public  sets: [] = []
+  public  sets: ISet[] = []
+  private abcTunes:[]=[]
   ngOnInit() {
     this.setService.getAll().subscribe(sets => {
       this.sets = sets.data

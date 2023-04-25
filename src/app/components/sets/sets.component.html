@@ -1,6 +1,13 @@
+Voici la liste des sets joué sur les sessions de Toulon
 
-Il y a {{ sets.length }} sets
+<div *ngIf="sets">
+  Il y a {{ sets.length }} sets
 
-<div *ngFor="let set of sets">
-  {{ set | json }}
+  <div *ngFor="let set of sets">
+    <a [routerLink]="['/sets', set.id]">
+       {{ set.attributes.title }}
+    </a>
+
+  </div>
+
 </div>

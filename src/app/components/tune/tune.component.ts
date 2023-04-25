@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TuneService} from "../../services/tune.service";
 import * as abcjs from "abcjs";
+import {ActivatedRoute} from "@angular/router";
 
 
 
@@ -12,12 +13,14 @@ import * as abcjs from "abcjs";
 export class TuneComponent implements  OnInit {
   public tune: any
 
-  constructor(private tuneService: TuneService) {}
+  constructor(private tuneService: TuneService,   private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.tuneService.getAll().subscribe(tune => {
-      this.tune = tune.data[0]
-      console.log('tune', this.tune.attributes.abc)
+    const id = this.route.snapshot.paramMap.get('id')! as unknown as number;
+
+    this.tuneService.get(id ).subscribe(tune => {
+      this.tune = tune.data.attributes
+      console.log('tune', this.tune)
 
     const cursorControl = {}
 
@@ -38,7 +41,7 @@ export class TuneComponent implements  OnInit {
       );
 
       const visualObj = abcjs.renderAbc("paper",
-        this.tune.attributes.abc, abcOptions);
+        this.tune.abc, abcOptions);
       const createSynth = new abcjs.synth.CreateSynth();
       createSynth.init({visualObj: visualObj[0]}).then(function () {
         synthControl.setTune(visualObj[0], false, audioParams).then(function () {
