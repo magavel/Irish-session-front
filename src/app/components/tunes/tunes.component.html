@@ -1,16 +1,36 @@
-<h2>Liste de tous nos morceaux</h2>
-<p>Voici la liste de tous les morceaux joués. Ces morceaux sont joué en set de 2 ou 3 morceaux</p>
 <div *ngIf="tunes">
+  Il y a {{ tunes.length }} morceaux
 
-
-  Il y a {{tunes.length}} morceaux
-
-  <div *ngFor="let tune of tunes">
-
-    <a [routerLink]="['/tunes', tune.id]">
-      {{ tune.attributes.title }}
-    </a>
-
-  </div>
-
+  <p-table
+    [value]="tunes"
+    [paginator]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="attributes.title">
+          Nom <p-sortIcon field="attributes.title"></p-sortIcon>
+        </th>
+        <th pSortableColumn="attributes.tonality">
+          Tonalité <p-sortIcon field="attributes.tonality"></p-sortIcon>
+        </th>
+        <th pSortableColumn="attributes.genre">
+          Genre <p-sortIcon field="attributes.genre"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tune>
+      <tr>
+        <td>
+          <a [routerLink]="['/tunes', tune.id]">
+            {{ tune.attributes.title }}
+          </a>
+        </td>
+        <td>{{ tune.attributes.tonality }}</td>
+        <td>{{ tune.attributes.genre }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>

@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ToolboxComponent } from './components/toolbox/toolbox.component';
+import {TableModule} from "primeng/table";
 
 @NgModule({
   declarations: [
@@ -25,11 +26,12 @@ import { ToolboxComponent } from './components/toolbox/toolbox.component';
     ContactComponent,
     ToolboxComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TableModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
